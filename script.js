@@ -8,6 +8,16 @@ function generatePassword() {
     passwordLength = prompt("How long would you like your password to be? (8-128 characters)");
   }
 
+  var password = "";
+
+  for (var i = 0; i < passwordLength; i++) {
+    var randomIndex = Math.floor(Math.random() * characters.length);
+    password += characters[randomIndex];
+  }
+
+  return password;
+}
+
 // Get references to the #generate element
 var generateBtn = document.querySelector("#generate");
 
