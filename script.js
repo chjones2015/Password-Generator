@@ -20,9 +20,16 @@ for (var i = 0; i < characters.length; i++) {
 
 function generatePassword() {
   var passwordLength = 0;
+  var includeLowercase = false;
+  var includeUppercase = false;
+  var includeNumeric = false;
+  var includeSpecial = false;
 
-  while (passwordLength < 8 || passwordLength > 128) {
-    passwordLength = prompt("How long would you like your password to be? (8-128 characters)");
+  while (!includeLowercase && !includeUppercase && !includeNumeric && !includeSpecial) {
+    includeLowercase = confirm("Do you want to include lowercase letters?");
+    includeUppercase = confirm("Do you want to include uppercase letters?");
+    includeNumeric = confirm("Do you want to include numbers?");
+    includeSpecial = confirm("Do you want to include special characters?");
   }
 
   var password = "";
