@@ -32,11 +32,29 @@ function generatePassword() {
     includeSpecial = confirm("Do you want to include special characters?");
   }
 
+  while (passwordLength < 8 || passwordLength > 128) {
+    passwordLength = parseInt(prompt("How long do you want your password to be? (8-128 characters)"));
+  }
+
   var password = "";
 
-  for (var i = 0; i < passwordLength; i++) {
-    var randomIndex = Math.floor(Math.random() * characters.length);
-    password += characters[randomIndex];
+  while (password.length < passwordLength) {
+    if (includeLowercase) {
+      var randomNumber = (Math.random() * lowercaseChars.length) | 0; // removes decimal as well
+      password += lowercaseChars[randomNumber];
+    }
+    if (includeUppercase) {
+      var randomNumber = (Math.random() * uppercaseChars.length) | 0;
+      password += uppercaseChars[randomNumber];
+    }
+    if (includeNumeric) {
+      var randomNumber = (Math.random() * numericChars.length) | 0;
+      password += numericChars[randomNumber];
+    }
+    if (includeSpecial) {
+      var randomNumber = (Math.random() * specialChars.length) | 0;
+      password += specialChars[randomNumber];
+    }
   }
 
   return password;
