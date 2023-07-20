@@ -1,10 +1,11 @@
 // Assignment code here
+// string defined
 var characters = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz1234567890!@#$%^&*()_+";
 var lowercaseChars = [];
 var uppercaseChars = [];
 var numericChars = [];
 var specialChars = [];
-
+// array created for each type of character
 for (var i = 0; i < characters.length; i++) {
   var char = characters[i];
   if (char >= "a" && char <= "z") {
@@ -17,27 +18,27 @@ for (var i = 0; i < characters.length; i++) {
     specialChars.push(char);
   }
 }
-
+// function to generate password
 function generatePassword() {
   var passwordLength = 0;
   var includeLowercase = false;
   var includeUppercase = false;
   var includeNumeric = false;
   var includeSpecial = false;
-
+// while loop to make sure at least one type of character is selected
   while (!includeLowercase && !includeUppercase && !includeNumeric && !includeSpecial) {
     includeLowercase = confirm("Do you want to include lowercase letters?");
     includeUppercase = confirm("Do you want to include uppercase letters?");
     includeNumeric = confirm("Do you want to include numbers?");
     includeSpecial = confirm("Do you want to include special characters?");
   }
-
+// while loop to make sure password length is between 8 and 128 characters
   while (passwordLength < 8 || passwordLength > 128) {
     passwordLength = parseInt(prompt("How long do you want your password to be? (8-128 characters)"));
   }
 
   var password = "";
-
+// while loop to generate random password
   while (password.length < passwordLength) {
     if (includeLowercase) {
       var randomNumber = (Math.random() * lowercaseChars.length) | 0; // removes decimal as well
@@ -56,7 +57,7 @@ function generatePassword() {
       password += specialChars[randomNumber];
     }
   }
-
+// returns password
   return password;
 }
 
